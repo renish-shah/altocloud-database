@@ -10,11 +10,11 @@ import com.altoCloud.domain.MesowestTblStationInfo;
 public class MesowestTblDAO {
 
 	public static void main(String[] args) {
-		new MesowestTblDAO().saveCity("");
+		new MesowestTblDAO().saveStationDetails("");
 	}
 	
 	
-	public Long saveCity(String cityName) {
+	public Long saveStationDetails(String cityName) {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction transaction = null;
 		Long stationPrimaryId = null;
