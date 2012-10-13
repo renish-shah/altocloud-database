@@ -8,6 +8,7 @@ import java.io.InputStreamReader;
 
 import com.altoCloud.domain.MesowestTblStationInfo;
 import com.altoCloud.domain.Weather;
+import com.altoCloud.domain.level3.StationDetailsExtra;
 
 /**
  * @author RENISH
@@ -19,8 +20,65 @@ public class ParseDataFiles {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		
-		new ParseDataFiles().parseWeatherDataFile();
+
+		// new ParseDataFiles().parseWeatherDataFile();
+		new ParseDataFiles().parseMesowestCSVTblFile();
+	}
+
+	public void parseMesowestCSVTblFile() {
+
+		try {
+			FileInputStream fstream = new FileInputStream(
+					"E:\\A Set of Sample Data\\mesowest_csv_tbl_Tue Oct 02 195702 PDT 2012_Tue Oct 02 195703 PDT 2012.out");
+
+			// Get the object of DataInputStream
+			DataInputStream in = new DataInputStream(fstream);
+			BufferedReader br = new BufferedReader(new InputStreamReader(in));
+
+			String strLine="";
+			// Read File Line By Line
+			strLine = br.readLine();
+
+			// Read File Line By Line
+			String data[] = new String[22];
+			
+			while ((strLine = br.readLine()) != null) {
+			
+				System.out.println("" + strLine);
+				data = strLine.split(",");
+				// System.out.println("hUnGrY ReNiSh" + data.length);
+
+				// 0-1-2 // primary id,secondary id,station name,
+				// 3,4,5 //state,country,latitude,
+				// 6,7,8 //longitude,elevation,mesowest network id,
+				// 9,10,11 //network name,status,primary provider id,
+				// 12,13,14 //primary provider,secondary provider id,secondaryprovider,
+				// 15,16,17 //tertiary provider id,tertiary provider,wims_id;
+
+				// KIYA,,Abbeville Chris Crusta Memorial
+				// Airport,LA,US,29.97578,-92.08422,
+				// 4.9,1,NWS/FAA,ACTIVE,2,National Weather Service,,,,,;
+				// Level-2 Weather Domain
+
+				StationDetailsExtra detailsExtra = new StationDetailsExtra();
+				detailsExtra.setStnSecId(data[1]);
+				detailsExtra.setPriProId(data[11]);
+				detailsExtra.setSecProId(data[13]);
+				detailsExtra.setNetworkId(data[8]);
+				detailsExtra.setTerProId(data[15]);
+
+				System.out.println("Station Extra details stored");
+
+			}
+
+			// Close the input stream
+
+			in.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
 	}
 
 	public void parseWeatherDataFile() {
