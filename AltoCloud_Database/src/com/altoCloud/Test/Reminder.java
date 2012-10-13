@@ -9,7 +9,7 @@ public class Reminder {
 			System.out.println(new Date() + "\007");
 			Thread.sleep(2 * 60 * 1000);
 		}
-
+//test paridhi
 	}
 
 	public void reminderAt5Min() throws InterruptedException {
