@@ -33,10 +33,15 @@ public class ParseDataFiles {
 	public static void main(String[] args) {
 
 		// new ParseDataFiles().parseWeatherDataFile();
-		new ParseDataFiles().parseMesowestTblFile();
-		new ParseDataFiles().parseMesowestCSVTblFile();
-		new ParseDataFiles().parseWeatherDataFile();
-		
+//		new ParseDataFiles().parseMesowestTblFile();
+//		new ParseDataFiles().parseMesowestCSVTblFile();
+//		new ParseDataFiles().parseWeatherDataFile();
+		 WeatherQuery wr= new WeatherQuery();
+		 List<Weather> r =wr.getAllByState("UT");
+		 for(int i=0;i<r.size();i++){
+		 System.out.println(r.get(0).getTMPF());
+		 System.out.print(r.get(0).getStn_id().getStn());
+		 }
 	}
 
 	public void parseMesowestCSVTblFile() {
@@ -80,25 +85,29 @@ public class ParseDataFiles {
 				Station_Details station_Details = new Station_Details();
 
 				station_Details = sq.findById(data[0]);
+
 				// detailsExtra.setStnSecId(data[1]);
 				detailsExtra.setStn_details(station_Details);
 				detailsExtra.setSecondary_id(data[1]);
 				detailsExtra.setNetwork_name(data[9]);
-				detailsExtra.setPrimary_provider_id(Integer.parseInt(data[11]));
-				detailsExtra.setPrimary_provider(data[11]);
+				if (data[11].length() != 0)
+					detailsExtra.setPrimary_provider_id(Integer
+							.parseInt(data[11]));
+				if (data[12].length() != 0)
+					detailsExtra.setPrimary_provider(data[12]);
 
-				if (data[13] != " ") {
+				if (data[13].length() != 0) {
 					detailsExtra.setSecondary_provider_id(Integer
 							.parseInt(data[13]));
 				}
-				if (data[14] != "") {
+				if (data[14].length() != 0) {
 					detailsExtra.setSecondary_provider(data[14]);
 				}
-				if (data[15] != "") {
+				if (data[15].length() != 0) {
 					detailsExtra.setTertiary_provider_id(Integer
 							.parseInt(data[15]));
 				}
-				if (data[16] != "") {
+				if (data[16].length() != 0) {
 					detailsExtra.setTertiary_provider(data[16]);
 				}
 				query.add(detailsExtra);
@@ -109,8 +118,9 @@ public class ParseDataFiles {
 			// Close the input stream
 
 			in.close();
-		} catch (IOException e) {
+		} catch (Exception e) {
 			// TODO Auto-generated catch block
+			System.out.println("Exception: " + e);
 			e.printStackTrace();
 		}
 
@@ -153,18 +163,18 @@ public class ParseDataFiles {
 				// weather.setStationCode(data[1]);
 				// sq.findById(data[1]);
 				weather.setStn_id(sq.findById(data[1]));
-//				SimpleDateFormat dateFormat = new SimpleDateFormat(
-//						"yy-MM-dd hh:mm");
-//				java.util.Date parsedDate = null;
-//				try {
-//					parsedDate = dateFormat.parse(data[2]);
-//				} catch (ParseException e) {
-//					// TODO Auto-generated catch block
-//					e.printStackTrace();
-//				}
-//				java.sql.Timestamp timestamp = new java.sql.Timestamp(
-//						parsedDate.getTime());
-//				weather.setDate(timestamp);
+				// SimpleDateFormat dateFormat = new SimpleDateFormat(
+				// "yy-MM-dd hh:mm");
+				// java.util.Date parsedDate = null;
+				// try {
+				// parsedDate = dateFormat.parse(data[2]);
+				// } catch (ParseException e) {
+				// // TODO Auto-generated catch block
+				// e.printStackTrace();
+				// }
+				// java.sql.Timestamp timestamp = new java.sql.Timestamp(
+				// parsedDate.getTime());
+				// weather.setDate(timestamp);
 				// weather.setTimestamp(data[2]);
 
 				// weather.setMNET(data[3]);
