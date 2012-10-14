@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+
 import javax.persistence.Table;
 
 /**
@@ -19,30 +22,66 @@ public class StationDetailsExtra {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "id", unique = true, nullable = false)
-	private long id;
+	@Column(name = "STN_DET_EX_ID")
+	private long Id;
 
 	@Column(name = "STN_SEC_ID")
 	private String stnSecId; // station Secondary ID
 
-	@Column(name = "NETWORK_ID")
-	private String networkId;
+	@OneToOne
+	@JoinColumn(name = "NETWORK_ID")
+	private NetworkDetails networkDetails;
 
-	@Column(name = "PRI_PRO_ID")
-	private String priProId; // primary provider ID
+	@OneToOne
+	@JoinColumn(name = "TER_PRO_ID")
+	private ProviderDetails terProDetails;
 
-	@Column(name = "SEC_PRO_ID")
-	private String secProId; // Secondary provider ID
+	@OneToOne
+	@JoinColumn(name = "PRI_PRO_ID")
+	private ProviderDetails priProDetails;
 
-	@Column(name = "TER_PRO_ID")
-	private String terProId; // tertiary provider ID
+	@OneToOne
+	@JoinColumn(name = "SEC_PRO_ID")
+	private ProviderDetails secProDetails;
+
+	public ProviderDetails getTerProDetails() {
+		return terProDetails;
+	}
+
+	public void setTerProDetails(ProviderDetails terProDetails) {
+		this.terProDetails = terProDetails;
+	}
+
+	public ProviderDetails getPriProDetails() {
+		return priProDetails;
+	}
+
+	public void setPriProDetails(ProviderDetails priProDetails) {
+		this.priProDetails = priProDetails;
+	}
+
+	public ProviderDetails getSecProDetails() {
+		return secProDetails;
+	}
+
+	public void setSecProDetails(ProviderDetails secProDetails) {
+		this.secProDetails = secProDetails;
+	}
+
+	public NetworkDetails getNetworkDetails() {
+		return networkDetails;
+	}
+
+	public void setNetworkDetails(NetworkDetails networkDetails) {
+		this.networkDetails = networkDetails;
+	}
 
 	public long getId() {
-		return id;
+		return Id;
 	}
 
 	public void setId(long id) {
-		this.id = id;
+		Id = id;
 	}
 
 	public String getStnSecId() {
@@ -53,36 +92,36 @@ public class StationDetailsExtra {
 		this.stnSecId = stnSecId;
 	}
 
-	public String getNetworkId() {
-		return networkId;
-	}
+	// public String getNetworkId() {
+	// return networkId;
+	// }
+	//
+	// public void setNetworkId(String networkId) {
+	// this.networkId = networkId;
+	// }
 
-	public void setNetworkId(String networkId) {
-		this.networkId = networkId;
-	}
-
-	public String getPriProId() {
-		return priProId;
-	}
-
-	public void setPriProId(String priProId) {
-		this.priProId = priProId;
-	}
-
-	public String getSecProId() {
-		return secProId;
-	}
-
-	public void setSecProId(String secProId) {
-		this.secProId = secProId;
-	}
-
-	public String getTerProId() {
-		return terProId;
-	}
-
-	public void setTerProId(String terProId) {
-		this.terProId = terProId;
-	}
+	// public String getPriProId() {
+	// return priProId;
+	// }
+	//
+	// public void setPriProId(String priProId) {
+	// this.priProId = priProId;
+	// }
+	//
+	// public String getSecProId() {
+	// return secProId;
+	// }
+	//
+	// public void setSecProId(String secProId) {
+	// this.secProId = secProId;
+	// }
+	//
+	// public String getTerProId() {
+	// return terProId;
+	// }
+	//
+	// public void setTerProId(String terProId) {
+	// this.terProId = terProId;
+	// }
 
 }
