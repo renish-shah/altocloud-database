@@ -33,15 +33,15 @@ public class ParseDataFiles {
 	public static void main(String[] args) {
 
 		// new ParseDataFiles().parseWeatherDataFile();
-//		new ParseDataFiles().parseMesowestTblFile();
-//		new ParseDataFiles().parseMesowestCSVTblFile();
-//		new ParseDataFiles().parseWeatherDataFile();
-		 WeatherQuery wr= new WeatherQuery();
-		 List<Weather> r =wr.getAllByState("UT");
-		 for(int i=0;i<r.size();i++){
-		 System.out.println(r.get(0).getTMPF());
-		 System.out.print(r.get(0).getStn_id().getStn());
-		 }
+		// new ParseDataFiles().parseMesowestTblFile();
+		// new ParseDataFiles().parseMesowestCSVTblFile();
+		// new ParseDataFiles().parseWeatherDataFile();
+		WeatherQuery wr = new WeatherQuery();
+		List<Weather> r = wr.getAllByState("UT");
+		for (int i = 0; i < r.size(); i++) {
+			System.out.println(r.get(0).getTMPF());
+			System.out.print(r.get(0).getStn_id().getStn());
+		}
 	}
 
 	public void parseMesowestCSVTblFile() {
@@ -80,6 +80,14 @@ public class ParseDataFiles {
 				// Airport,LA,US,29.97578,-92.08422,
 				// 4.9,1,NWS/FAA,ACTIVE,2,National Weather Service,,,,,;
 				// Level-2 Weather Domain
+
+				// StationDetailsExtra detailsExtra = new StationDetailsExtra();
+				//
+				// detailsExtra.setStnSecId(data[1]);
+				// detailsExtra.setPriProId(data[11]);
+				// detailsExtra.setSecProId(data[13]);
+				// detailsExtra.setNetworkId(data[8]);
+				// detailsExtra.setTerProId(data[15]);
 
 				Station_Details_extra detailsExtra = new Station_Details_extra();
 				Station_Details station_Details = new Station_Details();

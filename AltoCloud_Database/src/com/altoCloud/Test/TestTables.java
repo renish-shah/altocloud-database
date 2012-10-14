@@ -1,15 +1,15 @@
-/**
- * 
- */
 package com.altoCloud.Test;
 
+import java.sql.Date;
 import org.hibernate.HibernateException;
-import org.hibernate.Query;
 import org.hibernate.Session;
-
 import com.altoCloud.common.HibernateUtil;
+import com.altoCloud.domain.level3.NetworkDetails;
+import com.altoCloud.domain.level3.ProviderDetails;
 import com.altoCloud.domain.level3.StationDetails;
 import com.altoCloud.domain.level3.StationDetailsExtra;
+import com.altoCloud.domain.level3.StationStatus;
+import com.altoCloud.domain.level3.Weather;
 
 /**
  * @author RENISH
@@ -17,11 +17,79 @@ import com.altoCloud.domain.level3.StationDetailsExtra;
  */
 public class TestTables {
 
-	/**
-	 * @param args
-	 */
 	public static void main(String[] args) {
 		// Session session = HibernateUtil.getSessionFactory().openSession();
+		new TestTables().testAllLevel3Tables();
+	}
+
+	public void testAllLevel3Tables() {
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		org.hibernate.Transaction transaction = null;
+		try {
+
+			transaction = session.beginTransaction();
+
+			StationStatus stationStatus = new StationStatus();
+			stationStatus.setStatus("Active");
+			// session.save(stationStatus);
+
+			NetworkDetails networkDetails = new NetworkDetails();
+			networkDetails.setNetworkId("NET_ID");
+			networkDetails.setNetworkName("ABAP Net Name");
+			session.save(networkDetails);
+
+			ProviderDetails priProDet = new ProviderDetails();
+			priProDet.setProviderId("PRO_1");
+			priProDet.setProviderName("Test PRO_1");
+			session.save(priProDet);
+
+			ProviderDetails secProDet = new ProviderDetails();
+			secProDet.setProviderId("PRO_2");
+			secProDet.setProviderName("Test PRO_2");
+			session.save(secProDet);
+
+			ProviderDetails terProDet = new ProviderDetails();
+			terProDet.setProviderId("PRO_3");
+			terProDet.setProviderName("Test PRO_3");
+			session.save(terProDet);
+
+			StationDetailsExtra detailsExtra = new StationDetailsExtra();
+			detailsExtra.setStnSecId("stnSecId");
+			detailsExtra.setNetworkDetails(networkDetails);
+			detailsExtra.setPriProDetails(priProDet);
+			detailsExtra.setSecProDetails(secProDet);
+			detailsExtra.setTerProDetails(terProDet);
+
+			StationDetails stationDetails = new StationDetails();
+			stationDetails.setStnCode("AUT546");
+			stationDetails.setStnDetailsExtra(detailsExtra);
+			stationDetails.setStationStatus(stationStatus);
+
+			session.save(detailsExtra);
+			session.save(stationDetails);
+
+			Weather weather = new Weather();
+			weather.setTMPF(34.56);
+			weather.setStationDetails(stationDetails);
+			weather.setALTI(5.6);
+			weather.setDate(new Date(43453));
+			weather.setDRCT(56.78);
+			weather.setDWPF(43.56);
+			weather.setGUST(23.76);
+
+			session.save(weather);
+			transaction.commit();
+
+		} catch (HibernateException e) {
+			transaction.rollback();
+			e.printStackTrace();
+		} finally {
+			session.close();
+		}
+
+	}
+
+	public void testStationDetailsandExtraDetails() {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		org.hibernate.Transaction transaction = null;
 		try {
@@ -38,11 +106,11 @@ public class TestTables {
 			 */
 			StationDetails stationDetails1 = new StationDetails();
 			stationDetails1.setStnCode("ABAUT");
-			stationDetails1.setCountry("US");
-			stationDetails1.setElev(34.56);
-			stationDetails1.setLat(43.56);
-			stationDetails1.setLon(23.47);
-			stationDetails1.setMnet(8);
+			// stationDetails1.setCountry("US");
+			// stationDetails1.setElev(34.56);
+			// stationDetails1.setLat(43.56);
+			// stationDetails1.setLon(23.47);
+			// stationDetails1.setMnet(8);
 
 			/*
 			 * StationDetails stationDetails2 = new StationDetails();
@@ -52,11 +120,11 @@ public class TestTables {
 			 * stationDetails2.setMnet(8);
 			 */
 			StationDetailsExtra detailsExtra = new StationDetailsExtra();
-			detailsExtra.setNetworkId("network_ID1");
-			detailsExtra.setPriProId("PriProID");
-			detailsExtra.setSecProId("secProId");
+			// detailsExtra.setNetworkId("network_ID1");
+			// detailsExtra.setPriProId("PriProID");
+			// detailsExtra.setSecProId("secProId");
 			detailsExtra.setStnSecId("stnSecId");
-			detailsExtra.setTerProId("terProId");
+			// detailsExtra.setTerProId("terProId");
 
 			stationDetails1.setStnDetailsExtra(detailsExtra);
 			/*
@@ -85,4 +153,5 @@ public class TestTables {
 		}
 
 	}
+
 }
