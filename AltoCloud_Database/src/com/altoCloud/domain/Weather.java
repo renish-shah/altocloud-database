@@ -32,7 +32,13 @@ public class Weather implements Serializable {
 	// private Date date;
 	// private Time time;
 	// temporary solution
+	
 	private String timestamp;
+	private String MNET;
+	private String SLAT;
+	private String SLON;
+	private String SELV;
+	
 	private double TMPF;
 	private double SKNT;
 	private double DRCT;
@@ -43,6 +49,38 @@ public class Weather implements Serializable {
 	private double RELH;
 	private double WTHR;
 	private double P24I;
+
+	public String getMNET() {
+		return MNET;
+	}
+
+	public void setMNET(String mNET) {
+		MNET = mNET;
+	}
+
+	public String getSLAT() {
+		return SLAT;
+	}
+
+	public void setSLAT(String sLAT) {
+		SLAT = sLAT;
+	}
+
+	public String getSLON() {
+		return SLON;
+	}
+
+	public void setSLON(String sLON) {
+		SLON = sLON;
+	}
+
+	public String getSELV() {
+		return SELV;
+	}
+
+	public void setSELV(String sELV) {
+		SELV = sELV;
+	}
 
 	public long getId() {
 		return id;

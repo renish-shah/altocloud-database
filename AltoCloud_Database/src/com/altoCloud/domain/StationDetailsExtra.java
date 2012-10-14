@@ -19,6 +19,7 @@ public class StationDetailsExtra implements Serializable{
 	@Id
 	@OneToOne(cascade = CascadeType.ALL)
 	private StationDetails stn_details;
+	
 	private String secondary_id;
 	private String network_id;
 	@Column(nullable = false)
