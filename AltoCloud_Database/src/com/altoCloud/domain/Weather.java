@@ -1,4 +1,4 @@
-package com.altoCloud.domain;
+/*package com.altoCloud.domain;
 
 import java.io.Serializable;
 import java.sql.Date;
@@ -16,9 +16,9 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "Weather")
 public class Weather implements Serializable {
-	/**
+	*//**
 	 * 
-	 */
+	 *//*
 	private static final long serialVersionUID = 1L;
 	@Id
 	@GeneratedValue
@@ -100,7 +100,7 @@ public class Weather implements Serializable {
 		this.stnDetails = stn;
 	}
 
-	/*
+	
 	 * public Date getDate() { return date; }
 	 * 
 	 * public void setDate(Date date) { this.date = date; }
@@ -108,7 +108,7 @@ public class Weather implements Serializable {
 	 * public Time getTime() { return time; }
 	 * 
 	 * public void setTime(Time time) { this.time = time; }
-	 */
+	 
 	public double getTMPF() {
 		return TMPF;
 	}
@@ -198,3 +198,4 @@ public class Weather implements Serializable {
 	}
 
 }
+*/

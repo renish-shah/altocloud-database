@@ -26,7 +26,7 @@ public class Weather implements Serializable{
 	@ManyToOne()
 	@Cascade(org.hibernate.annotations.CascadeType.ALL)
 	@JoinColumn(name="stn")
-	private Station_Details stn_id;
+	private StationDetails stn_id;
 	private Timestamp date;
 	private Time time;
 	private double TMPF;
@@ -54,11 +54,11 @@ public class Weather implements Serializable{
 	
 	//@ManyToOne(cascade = CascadeType.ALL)
 	
-	public Station_Details getStn_id() {
+	public StationDetails getStn_id() {
 		return stn_id;
 	}
 
-	public void setStn_id(Station_Details stn) {
+	public void setStn_id(StationDetails stn) {
 		this.stn_id = stn;
 	}
 

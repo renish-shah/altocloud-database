@@ -1,4 +1,4 @@
-package com.altoCloud.domain;
+/*package com.altoCloud.domain;
 import java.io.Serializable;
 
 import javax.persistence.Column;
@@ -112,3 +112,4 @@ public class StationDetails {
 	}
 
 }
+*/

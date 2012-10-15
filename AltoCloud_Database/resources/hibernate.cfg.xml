@@ -33,12 +33,12 @@
 		<property name="hbm2ddl.auto">create-drop</property>
 		<!-- <property name="hbm2ddl.auto">update</property> -->
 
-<!-- 		<mapping class="data.Station_Details" /> -->
-<!-- 		<mapping class="data.Station_Details_extra" /> -->
-<!-- 		<mapping class="data.Weather" />  -->
+		<!-- <mapping class="data.Station_Details" /> -->
+		<!-- <mapping class="data.Station_Details_extra" /> -->
+		<!-- <mapping class="data.Weather" /> -->
 		<!-- <mapping class="com.altoCloud.domain.MesowestTblStationInfo" /> -->
-		<!--  <mapping class="com.altoCloud.domain.level3.StationDetails" />
-		<mapping class="com.altoCloud.domain.level3.StationDetailsExtra" />-->
+		<mapping class="com.altoCloud.domain.level3.StationDetails" />
+		<mapping class="com.altoCloud.domain.level3.StationDetailsExtra" />
 		<mapping class="com.altoCloud.domain.level3.Weather" />
 		<mapping class="com.altoCloud.domain.level3.NetworkDetails" />
 		<mapping class="com.altoCloud.domain.level3.ProviderDetails" />

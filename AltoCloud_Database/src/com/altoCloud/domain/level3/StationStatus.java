@@ -7,6 +7,9 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 /**
@@ -21,9 +24,22 @@ public class StationStatus {
 	@GeneratedValue
 	@Column(name = "id")
 	private long id;
-	
+
 	@Column(name = "STATUS")
 	private String status;
+	
+//	@OneToOne
+//	@JoinColumn(name = "STN_CODE")
+//	private StationDetails stationDetails;
+
+
+//	public StationDetails getStationDetails() {
+//		return stationDetails;
+//	}
+//
+//	public void setStationDetails(StationDetails stationDetails) {
+//		this.stationDetails = stationDetails;
+//	}
 
 	public String getStatus() {
 		return status;

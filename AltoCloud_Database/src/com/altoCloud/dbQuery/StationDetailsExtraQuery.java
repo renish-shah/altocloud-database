@@ -9,26 +9,29 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.altoCloud.common.HibernateUtil;
-import com.altoCloud.common.HibernateUtil1;
+
+import com.altoCloud.domain.level3.StationDetailsExtra;
+
 import data.Station_Details_extra;
 
 public class StationDetailsExtraQuery {
-	public void add(Station_Details_extra s_details) {
-		Session session = HibernateUtil1.getSessionFactory().getCurrentSession();
-		Transaction transaction = null;
+	public void add(StationDetailsExtra stnDetExtra, Session session) {
+//		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+//		Transaction transaction = null;
 		try {
-			transaction = session.beginTransaction();
-			session.save(s_details);
-			transaction.commit();
+//			transaction = session.beginTransaction();
+			session.save(stnDetExtra);
+//			transaction.commit();
 		} catch (HibernateException e) {
-			transaction.rollback();
+			//transaction.rollback();
+			System.out.println("StationDetailsExtraQuery Exception"+e);
 			e.printStackTrace();
 		}
 
 	}
 
 	public void remove(Station_Details_extra item) {
-		Session session = HibernateUtil1.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Transaction transaction = null;
 		try {
 			transaction = session.beginTransaction();
@@ -42,7 +45,7 @@ public class StationDetailsExtraQuery {
 	}
 
 	public Station_Details_extra findById(String id) {
-		Session session = HibernateUtil1.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		Station_Details_extra r = null;
 		try {
 			session.beginTransaction();
@@ -60,7 +63,7 @@ public class StationDetailsExtraQuery {
 	}
 
 	public List<Station_Details_extra> getAllByMnetId(String id) {
-		Session session = HibernateUtil1.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		List<Station_Details_extra> r = new ArrayList<Station_Details_extra>();
 		try {
 			session.beginTransaction();
@@ -91,7 +94,7 @@ public class StationDetailsExtraQuery {
 		if (!validate(s_details) || s_details.getStn_details() == null)
 			throw new RuntimeException("Invalid person");
 
-		Session session = HibernateUtil1.getSessionFactory().getCurrentSession();
+		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 		try {
 			session.beginTransaction();
 			session.saveOrUpdate(s_details);

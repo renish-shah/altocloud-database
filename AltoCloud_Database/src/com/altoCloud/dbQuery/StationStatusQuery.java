@@ -6,19 +6,20 @@ import org.hibernate.Transaction;
 
 import com.altoCloud.common.HibernateUtil;
 import com.altoCloud.domain.level3.StationDetails;
+import com.altoCloud.domain.level3.StationStatus;
 
-public class StationDetailsQuery {
+public class StationStatusQuery {
 
-	public void add(StationDetails stndetails, Session session) {
+	public void add(StationStatus stnStatus, Session session) {
 //		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 //		Transaction transaction = null;
 		try {
 //			transaction = session.beginTransaction();
-			session.save(stndetails);
+			session.save(stnStatus);
 //			transaction.commit();
 		} catch (Exception e) {
-			//transaction.rollback();
-			System.out.println("StationDetailsQuery Exception:"+e);
+			// transaction.rollback();
+			System.out.println("StationStatusQuery Exception:" + e);
 			e.printStackTrace();
 		}
 

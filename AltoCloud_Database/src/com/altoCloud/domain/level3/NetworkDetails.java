@@ -29,6 +29,17 @@ public class NetworkDetails {
 	@OneToOne(mappedBy = "networkDetails")
 	private StationDetailsExtra stnDetailsExtra;
 
+//	@OneToOne(mappedBy = "networkDetails")
+//	private StationDetails stnDetails;
+
+//	public StationDetails getStnDetails() {
+//		return stnDetails;
+//	}
+//
+//	public void setStnDetails(StationDetails stnDetails) {
+//		this.stnDetails = stnDetails;
+//	}
+
 	public StationDetailsExtra getStnDetailsExtra() {
 		return stnDetailsExtra;
 	}

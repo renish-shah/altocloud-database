@@ -1,4 +1,4 @@
-package com.altoCloud.domain;
+/*package com.altoCloud.domain;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -16,7 +16,7 @@ public class Station_Details_extra implements Serializable{
 	//private String stn;
 	private Station_Details stn_details;
 	private String secondary_id;
-	/*
+	
 	 * @Column(nullable = false) private String stn_name;
 	 * 
 	 * @Column(nullable = false) private String state;
@@ -30,7 +30,7 @@ public class Station_Details_extra implements Serializable{
 	 * @Column(nullable = false) private double elev;
 	 * 
 	 * @Column(nullable = false) private int mnet;
-	 */
+	 
 	
 	private String network_name;
 	
@@ -189,3 +189,4 @@ public class Station_Details_extra implements Serializable{
 	}
 
 }
+*/

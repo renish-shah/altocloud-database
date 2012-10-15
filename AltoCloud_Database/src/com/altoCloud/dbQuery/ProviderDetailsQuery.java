@@ -1,24 +1,26 @@
 package com.altoCloud.dbQuery;
 
+import java.util.List;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
 import com.altoCloud.common.HibernateUtil;
+import com.altoCloud.domain.level3.ProviderDetails;
 import com.altoCloud.domain.level3.StationDetails;
 
-public class StationDetailsQuery {
+public class ProviderDetailsQuery {
 
-	public void add(StationDetails stndetails, Session session) {
+	public void add(ProviderDetails providerDetails, Session session) {
 //		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 //		Transaction transaction = null;
 		try {
 //			transaction = session.beginTransaction();
-			session.save(stndetails);
+			session.save(providerDetails);
 //			transaction.commit();
-		} catch (Exception e) {
-			//transaction.rollback();
-			System.out.println("StationDetailsQuery Exception:"+e);
+		} catch (HibernateException e) {
+			// transaction.rollback();
+			System.out.println("ProviderDetailsQuery Exception:" + e);
 			e.printStackTrace();
 		}
 

@@ -14,7 +14,7 @@ public class Station_Details_extra implements Serializable{
 
 	
 	//private String stn;
-	private Station_Details stn_details;
+	private StationDetails stn_details;
 	private String secondary_id;
 	/*
 	 * @Column(nullable = false) private String stn_name;
@@ -181,10 +181,10 @@ public class Station_Details_extra implements Serializable{
 	}
 	@Id
 	@OneToOne(cascade = CascadeType.ALL)
-	public Station_Details getStn_details() {
+	public StationDetails getStn_details() {
 		return this.stn_details;
 	}
-	public void setStn_details(Station_Details stn_details) {
+	public void setStn_details(StationDetails stn_details) {
 		this.stn_details = stn_details;
 	}
 

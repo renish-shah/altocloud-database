@@ -1,6 +1,9 @@
 package com.altoCloud.Test;
 
 import java.sql.Date;
+import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.altoCloud.common.HibernateUtil;
@@ -72,7 +75,6 @@ public class TestTables {
 			weather.setTMPF(34.56);
 			weather.setStationDetails(stationDetails);
 			weather.setALTI(5.6);
-			weather.setDate(new Date(43453));
 			weather.setDRCT(56.78);
 			weather.setDWPF(43.56);
 			weather.setGUST(23.76);

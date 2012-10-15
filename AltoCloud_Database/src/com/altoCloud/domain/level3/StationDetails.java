@@ -6,6 +6,7 @@ import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -18,20 +19,23 @@ public class StationDetails {
 	@Column(name = "STN_CODE", unique = true, nullable = false, updatable = false)
 	private String stnCode;
 
+	@Column(name = "STN_NAME")
+	private String stnName;
+
 	@OneToOne(cascade = CascadeType.ALL)
 	private StationDetailsExtra stnDetailsExtra;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	private StationStatus stationStatus;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	private NetworkDetails networkDetails;
+
 	@OneToMany(mappedBy = "stationDetails")
 	private List<Weather> weather;
 
 	@Column(name = "OTHER_ID")
 	private long otherId;
-
-	@Column(name = "STN_NAME")
-	private String stnName;
 
 	@Column(name = "STATE")
 	private String state;
@@ -48,11 +52,11 @@ public class StationDetails {
 	@Column(name = "ELEV")
 	private double elev;
 
-	@Column(name = "MNET")
-	private int mnet;
+	// @Column(name = "MNET")
+	// private int mnet;
 
-	@Column(name = "STATUS")
-	private String status;
+	// @Column(name = "STATUS")
+	// private String status;
 
 	public String getStnCode() {
 		return stnCode;
@@ -142,20 +146,28 @@ public class StationDetails {
 		this.elev = elev;
 	}
 
-	public int getMnet() {
-		return mnet;
+	public NetworkDetails getNetworkDetails() {
+		return networkDetails;
 	}
 
-	public void setMnet(int mnet) {
-		this.mnet = mnet;
+	public void setNetworkDetails(NetworkDetails networkDetails) {
+		this.networkDetails = networkDetails;
 	}
 
-	public String getStatus() {
-		return status;
-	}
+	// public int getMnet() {
+	// return mnet;
+	// }
+	//
+	// public void setMnet(int mnet) {
+	// this.mnet = mnet;
+	// }
 
-	public void setStatus(String status) {
-		this.status = status;
-	}
+	// public String getStatus() {
+	// return status;
+	// }
+	//
+	// public void setStatus(String status) {
+	// this.status = status;
+	// }
 
 }

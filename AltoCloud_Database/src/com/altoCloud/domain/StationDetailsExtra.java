@@ -1,4 +1,4 @@
-package com.altoCloud.domain;
+/*package com.altoCloud.domain;
 import java.io.Serializable;
 
 import javax.persistence.CascadeType;
@@ -12,9 +12,9 @@ import javax.persistence.Table;
 @Table(name = "station_extra_details")
 public class StationDetailsExtra implements Serializable{
 
-	/**
+	*//**
 	 * 
-	 */
+	 *//*
 	private static final long serialVersionUID = 1L;
 	@Id
 	@OneToOne(cascade = CascadeType.ALL)
@@ -119,3 +119,4 @@ public class StationDetailsExtra implements Serializable{
 	}
 
 }
+*/

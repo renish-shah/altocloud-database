@@ -5,20 +5,21 @@ import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import com.altoCloud.common.HibernateUtil;
+import com.altoCloud.domain.level3.NetworkDetails;
 import com.altoCloud.domain.level3.StationDetails;
 
-public class StationDetailsQuery {
+public class NetworkDetailsQuery {
 
-	public void add(StationDetails stndetails, Session session) {
+	public void add(NetworkDetails networkDetails, Session session) {
 //		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
 //		Transaction transaction = null;
 		try {
 //			transaction = session.beginTransaction();
-			session.save(stndetails);
+			session.save(networkDetails);
 //			transaction.commit();
 		} catch (Exception e) {
-			//transaction.rollback();
-			System.out.println("StationDetailsQuery Exception:"+e);
+			// transaction.rollback();
+			System.out.println("NetworkDetailsQuery Exception:" + e);
 			e.printStackTrace();
 		}
 
